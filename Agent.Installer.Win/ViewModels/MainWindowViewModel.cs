@@ -117,7 +117,7 @@ namespace Remotely.Agent.Installer.Win.ViewModels
             {
                 return new Executor(param =>
                 {
-                    var logPath = Path.Combine(Path.GetTempPath(), "Remotely_Installer.log");
+                    var logPath = Path.Combine(Path.GetTempPath(), "Sunrise_Installer.log");
                     if (File.Exists(logPath))
                     {
                         Process.Start(logPath);
@@ -205,7 +205,7 @@ namespace Remotely.Agent.Installer.Win.ViewModels
                 Progress = arg;
             };
 
-            IsServiceInstalled = ServiceController.GetServices().Any(x => x.ServiceName == "Remotely_Service");
+            IsServiceInstalled = ServiceController.GetServices().Any(x => x.ServiceName == "Sunrise_Service");
             if (IsServiceMissing)
             {
                 HeaderMessage = $"Install the {ProductName} service.";
@@ -239,7 +239,7 @@ namespace Remotely.Agent.Installer.Win.ViewModels
                 var connectionInfoPath = Path.Combine(
                Path.GetPathRoot(Environment.SystemDirectory),
                    "Program Files",
-                   "Remotely",
+                   "Sunrise",
                    "ConnectionInfo.json");
 
                 if (File.Exists(connectionInfoPath))
@@ -269,7 +269,7 @@ namespace Remotely.Agent.Installer.Win.ViewModels
         {
             try
             {
-                ProductName = "Remotely";
+                ProductName = "Sunrise Support";
 
                 if (!string.IsNullOrWhiteSpace(brandingInfo?.Product))
                 {
@@ -447,7 +447,7 @@ namespace Remotely.Agent.Installer.Win.ViewModels
             }
             else
             {
-                imageStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Remotely.Agent.Installer.Win.Assets.Remotely_Icon.png");
+                imageStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Remotely.Agent.Installer.Win.Assets.Sunrise_Icon.png");
             }
 
             var bitmap = new BitmapImage();
@@ -470,14 +470,14 @@ namespace Remotely.Agent.Installer.Win.ViewModels
                     return;
                 }
 
-                HeaderMessage = "Installing Remotely...";
+                HeaderMessage = "Installing Sunrise Support...";
 
                 if (await Installer.Install(ServerUrl, OrganizationID, DeviceGroup, DeviceAlias, DeviceUuid, CreateSupportShortcut))
                 {
                     IsServiceInstalled = true;
                     Progress = 0;
                     HeaderMessage = "Installation completed.";
-                    StatusMessage = "Remotely has been installed.  You can now close this window.";
+                    StatusMessage = "Sunrise Support has been installed.  You can now close this window.";
                 }
                 else
                 {
@@ -506,14 +506,14 @@ namespace Remotely.Agent.Installer.Win.ViewModels
             {
                 IsReadyState = false;
 
-                HeaderMessage = "Uninstalling Remotely...";
+                HeaderMessage = "Uninstalling Sunrise Support...";
 
                 if (await Installer.Uninstall())
                 {
                     IsServiceInstalled = false;
                     Progress = 0;
                     HeaderMessage = "Uninstall completed.";
-                    StatusMessage = "Remotely has been uninstalled.  You can now close this window.";
+                    StatusMessage = "Sunrise Support has been uninstalled.  You can now close this window.";
                 }
                 else
                 {
