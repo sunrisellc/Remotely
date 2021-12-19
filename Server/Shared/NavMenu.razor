@@ -2,7 +2,12 @@
 @inject IApplicationConfig AppConfig
 @inject IDataService DataService
 
-<div class="pl-4 pb-1 pr-0 pt-0 navbar navbar-dark" style="background-color: rgba(0,0,0,0.3)">
+<div class="pl-4 pb-1 pr-0 pt-0 navbar navbar-dark"
+    style="background: #01086F;
+    background: -webkit-linear-gradient(bottom, #01086F, #000000);
+    background: -moz-linear-gradient(bottom, #01086F, #000000);
+    background: linear-gradient(to top, #01086F, #000000);">
+
     <a class="navbar-brand text-left" href="">
         <div class="logo-title">
             @if (!string.IsNullOrWhiteSpace(_organization?.OrganizationName))
