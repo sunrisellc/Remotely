@@ -1,6 +1,12 @@
 ﻿@page "/"
+@using Microsoft.AspNetCore.Hosting
+@using Microsoft.Extensions.Logging
+
 @inject IApplicationConfig AppConfig
 @inject IDataService DataService
+@inject IWebHostEnvironment HostEnv
+@inject NavigationManager NavManager
+@inject ILogger<Downloads> Logger
 
 <AuthorizeView>
     <NotAuthorized>
