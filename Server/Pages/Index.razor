@@ -1,24 +1,97 @@
 ﻿@page "/"
 @inject IApplicationConfig AppConfig
 @inject IDataService DataService
- 
+
 <AuthorizeView>
     <NotAuthorized>
         <div class="jumbotron" style="text-align: center">
-        <img class="img-fluid" src="/images/Remotely_Icon.png" /><br>
+            <img class="img-fluid" src="/images/Remotely_Icon.png" /><br>
             <h3 class="display-4">Sunrise Remote Support</h3>
             <p class="lead">
 
             </p>
             <hr class="my-4">
-            <p class="lead">
-                <a class="btn btn-primary btn-lg mr-2" href="Identity/Account/Login" role="button">Log In</a>
 
-                @if (AppConfig.MaxOrganizationCount < 0 || DataService.GetOrganizationCount() < AppConfig.MaxOrganizationCount)
+            <div class="row mb-3">
+                <h5>Portable Instant Support Clients</h5>
+                <div class="text-info col-sm-12 pl-0 mb-2">
+                    Instant desktop sharing.  No account required.
+                </div>
+                <div class="col-sm-6 mb-3">
+                    <strong>Windows (64-Bit)</strong>
+                    <p>
+                        <a target="_blank" href="/api/ClientDownloads/Desktop/WindowsDesktop-x64/@_organizationId">Windows EXE</a>
+                    </p>
+                </div>
+                <div class="col-sm-6">
+                    <strong>Windows (32-Bit)</strong>
+                    <p>
+                        <a target="_blank" href="/api/ClientDownloads/Desktop/WindowsDesktop-x86/@_organizationId">Windows EXE</a>
+                    </p>
+                </div>
+                <div class="col-sm-6 mb-3">
+                    <strong>Linux 64-Bit</strong>
+                    <p>
+                        <a target="_blank" href="/api/ClientDownloads/Desktop/UbuntuDesktop/@_organizationId">Ubuntu Executable</a>
+                    </p>
+                </div>
+                @*<div class="col-sm-6 mb-3">
+                <strong>macOS x64 (10.12 - 10.15)</strong>
+                <p>
+                    <a target="_blank" href="/api/ClientDownloads/Desktop/MacOS-x64/@_organizationId">macOS x64 Executable</a>
+                </p>
+                <strong>macOS arm64 (11.01)</strong>
+                <p>
+                    <a target="_blank" href="/api/ClientDownloads/Desktop/MacOS-arm64/@_organizationId">macOS arm64 Executable</a>
+                </p>
+            </div>*@
+            </div>
+
+
+            <div class="row mb-3">
+                <h5>Installable Instant Support Clients</h5>
+                <div class="text-info col-sm-12 pl-0 mb-2">
+                    Light-weight, self-updating quick support clients.
+                </div>
+
+                @if (!_isServerUrlEmbedded)
                 {
-                    <a class="btn btn-primary btn-lg" href="Identity/Account/Register" role="button">Register</a>
+                <div class="col-sm-12">
+                    <AlertBanner Message="Must be built from source to target specific server URL." StatusClass="warning" />
+                </div>
                 }
-            </p>
+
+
+                <div class="col-sm-6 mb-3">
+                    <strong>Windows (64-Bit)</strong>
+                    <p>
+                        <small>Note: Only the default organization's branding will apply to these.</small>
+                    </p>
+                    <p>
+                        <a target="_blank" href="/Content/Win-x64/ClickOnce/setup.exe">Windows Installer</a>
+                    </p>
+                </div>
+                <div class="col-sm-6">
+                    <strong>Windows (32-Bit)</strong>
+                    <p>
+                        <small>Note: Only the default organization's branding will apply to these.</small>
+                    </p>
+                    <p>
+                        <a target="_blank" href="/Content/Win-x86/ClickOnce/setup.exe">Windows Installer</a>
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <h4>Unattended Access Resident Agents</h4>
+                    <div class="text-info col-sm-12 pl-0 mb-2">
+                        Installable background agents that provide unattended access and remote scripting to client systems are available for Remote Administration purposes only. Please ask your support agent about this service.
+                    </div>
+                </div>
+            </div>
+
         </div>
     </NotAuthorized>
     <Authorized>
