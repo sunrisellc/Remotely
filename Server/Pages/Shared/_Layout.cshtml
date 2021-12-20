@@ -76,18 +76,13 @@
         <nav class="navbar navbar-dark bg-primary navbar-expand-sm navbar-toggleable-sm mb-3">
             <div class="container">
 
-                <div class="col-md-3">
-                    <img class="img-fluid" src="/images/Remotely_Icon_128.png">
-                </div>
-
-                <div class="col-md-9">
                         <a class="navbar-brand text-left" href="~/">
                             <div>
                                 @organizationName
                             </div>
                             <div class="logo-subtitle">Support Portal</div>
                         </a>
-                </div>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -116,11 +111,7 @@
             @RenderBody()
         </main>
     </div>
-    <footer class="footer border-top text-muted mt-4">
-        <div class="container">
-            &copy; @DateTimeOffset.Now.Year - <a href="https://lucency.co">Translucency Software</a>
-        </div>
-    </footer>
+
     <script src="~/Identity/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/Identity/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/Identity/js/site.js" asp-append-version="true"></script>
